@@ -21,6 +21,7 @@ namespace FindAMusicianAPI.Controller{
         public ArtistsController(FindAMusicianDbContext context, IWebHostEnvironment hosting){
             _context = context;
             _hosting = hosting;
+            
         }
 
         [HttpGet]
