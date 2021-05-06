@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHub\\Web-Utviling\\FindAMusicianAPI\\FindAMusicianAPI.csproj": {}
+    "/Users/deogratiassaidi/Documents/GitHub/Web-Utviling/FindAMusicianAPI/FindAMusicianAPI.csproj": {}
   },
   "projects": {
-    "C:\\GitHub\\Web-Utviling\\FindAMusicianAPI\\FindAMusicianAPI.csproj": {
+    "/Users/deogratiassaidi/Documents/GitHub/Web-Utviling/FindAMusicianAPI/FindAMusicianAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\Web-Utviling\\FindAMusicianAPI\\FindAMusicianAPI.csproj",
+        "projectUniqueName": "/Users/deogratiassaidi/Documents/GitHub/Web-Utviling/FindAMusicianAPI/FindAMusicianAPI.csproj",
         "projectName": "FindAMusicianAPI",
-        "projectPath": "C:\\GitHub\\Web-Utviling\\FindAMusicianAPI\\FindAMusicianAPI.csproj",
-        "packagesPath": "C:\\Users\\C5269632\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\Web-Utviling\\FindAMusicianAPI\\obj\\",
+        "projectPath": "/Users/deogratiassaidi/Documents/GitHub/Web-Utviling/FindAMusicianAPI/FindAMusicianAPI.csproj",
+        "packagesPath": "/Users/deogratiassaidi/.nuget/packages/",
+        "outputPath": "/Users/deogratiassaidi/Documents/GitHub/Web-Utviling/FindAMusicianAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\C5269632\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/deogratiassaidi/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -77,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.202/RuntimeIdentifierGraph.json"
         }
       }
     }

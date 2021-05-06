@@ -30,7 +30,7 @@ namespace FindAMusicianAPI
         {
             services.AddCors(
                 options => {
-                    options.AddPolicy("AllowAll", 
+                    options.AddPolicy("allowAll", 
                         builder => builder
                             .AllowAnyHeader()
                             .AllowAnyMethod()
@@ -64,7 +64,7 @@ namespace FindAMusicianAPI
 
             app.UseStaticFiles(); 
 
-            app.UseCors("AllowAll");
+            app.UseCors("allowAll");
 
             app.UseAuthorization();
 
