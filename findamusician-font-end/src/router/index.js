@@ -1,25 +1,72 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import { createRouter, createWebHistory } from "vue-router";
+import LandingPage from "../views/LandingPage.vue";
+import ArtistsPage from "../views/ArtistsPage.vue";
+import RequestPage from "../views/RequestPage.vue";
+import PageNotFound from "../views/PageNotFound.vue";
+import EditArtists from "../views/AdminView/EditArtists.vue";
+import ArtistAdmin from "../views/AdminView/ArtistAdmin.vue";
+import AddArtist from "../views/AdminView/AddArtist.vue";
+import IncomingRequests from "../views/AdminView/IncomingRequests.vue";
+import SeeRequests from "../views/AdminView/SeeRequests.vue";
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
-    component: Home
+    path: "/artists",
+    name: "LandingPage",
+    component: LandingPage,
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
-]
+    path: "/",
+    redirect: '/artists'
+  },
+  {
+    path: "/artists/:id",
+    name: "ArtistsPage",
+    component: ArtistsPage,
+    
+  },
+  {
+    path: "/request",
+    name: "RequestPage",
+    component: RequestPage,
+  },
+  { path: "/:catchAll(.*)", component: PageNotFound },
+
+ 
+
+  /* Admin Pages */
+
+  {
+    path: "/admin/edit-artists",
+    name: "EditArtists",
+    component: EditArtists,
+  },
+  {
+    path: "/admin/artist-admin",
+    name: "ArtistAdmin",
+    component: ArtistAdmin,
+  },
+  {
+    path: "/admin/add-artist",
+    name: "AddArtist",
+    component: AddArtist,
+  },
+  {
+    path: "/admin/incoming-request",
+    name: "IncomingRequest",
+    component: IncomingRequests,
+  },
+  {
+    path: "/admin/incoming-request/:id",
+    name: "SeeRequests",
+    component: SeeRequests,
+  },
+  
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
