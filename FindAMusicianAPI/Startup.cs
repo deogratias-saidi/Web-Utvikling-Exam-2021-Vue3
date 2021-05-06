@@ -60,6 +60,10 @@ namespace FindAMusicianAPI
 
             app.UseRouting();
 
+            app.UseDefaultFiles(); 
+
+            app.UseStaticFiles(); 
+
             app.UseCors("AllowAll");
 
             app.UseAuthorization();

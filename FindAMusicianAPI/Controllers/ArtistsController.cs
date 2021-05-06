@@ -14,22 +14,22 @@ namespace FindAMusicianAPI.Controller{
     [ApiController]
     [EnableCors("allowAll")]
 
-    public class ArtitsController :ControllerBase {
+    public class ArtistsController :ControllerBase {
         public readonly FindAMusicianDbContext _context;
         private readonly IWebHostEnvironment _hosting;
 
-        public ArtitsController(FindAMusicianDbContext context, IWebHostEnvironment hosting){
+        public ArtistsController(FindAMusicianDbContext context, IWebHostEnvironment hosting){
             _context = context;
             _hosting = hosting;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Artist>> GetAllRequest(){
+        public async Task<IEnumerable<Artist>> GetAllArtist(){
              return await _context.Artists.ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Artist>> GetRequestById(int id){
+        public async Task<ActionResult<Artist>> GetArtistById(int id){
             var artist = await _context.Artists.FirstOrDefaultAsync(a => a.Id == id);
 
             if (artist == null)
@@ -40,7 +40,7 @@ namespace FindAMusicianAPI.Controller{
         }
 
         [HttpPut("{id}")]
-        public async Task<Artist> ChangeRequestById(int id, Artist artist){
+        public async Task<Artist> ChangeArtistById(int id, Artist artist){
             var _artist = await _context.Artists.FirstOrDefaultAsync(a => a.Id == id);
             if(_artist != null){
                 _artist.ArtistName = artist.ArtistName;
@@ -56,9 +56,8 @@ namespace FindAMusicianAPI.Controller{
         }
 
         [HttpPost]
-        public async Task<ActionResult<Artist>> AddRequest(Artist artist){
+        public async Task<ActionResult<Artist>> AddArtist(Artist artist){
 
-            var now = DateTime.Now; // Dette er for å få dagens Dato.
             var _artist = new Artist(){
                 ArtistName = artist.ArtistName,
                 Contact = artist.Contact,
@@ -85,7 +84,7 @@ namespace FindAMusicianAPI.Controller{
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteRequest(int id){
+        public async Task<IActionResult> DeleteArtist(int id){
 
            var _artist = await _context.Artists.FindAsync(id);
            
