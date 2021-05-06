@@ -1,4 +1,5 @@
 <template>
+<div>
   <div :request="request" class="container d-flex justify-content-center">
     <h1>Forespørsel #{{ request.id }}</h1>
   </div>
@@ -17,6 +18,7 @@
       
     
     </div>
+  </div>
   </div>
 
 </template>

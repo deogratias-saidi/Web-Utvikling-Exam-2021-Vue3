@@ -18,6 +18,10 @@
         <label for="inputEmail4" class="form-label">Sjanger</label>
         <input type="text" class="form-control" v-model="artist.genre" />
       </div>
+      <div class="mb-3 image-form">
+        <label for="inputEmail4" class="form-label ">Bilde</label>
+        <input type="text" class="form-control" v-model="artist.image" />
+      </div>
       <div class="mb-3">
         <textarea
           class="form-control"
@@ -52,6 +56,7 @@ export default {
       contact: "",
       price: "",
       genre: "",
+      image: "",
       description: "",
     });
 
@@ -66,6 +71,7 @@ export default {
           artist.contact = response.data.contact;
           artist.price = response.data.price;
           artist.genre = response.data.genre;
+          artist.image = response.data.image;
           artist.description = response.data.description;
         });
     });
@@ -75,6 +81,7 @@ export default {
       let contact = artist.contact;
       let price = artist.price;
       let genre = artist.genre;
+      let image = artist.image;
       let description = artist.description;
 
       axios
@@ -83,6 +90,7 @@ export default {
           contact: contact,
           price: parseInt(price),
           genre: genre,
+          image: image,
           description: description,
         })
         .then(() => {
@@ -98,4 +106,7 @@ export default {
 </script>
 
 <style>
+.image-form{
+  display: none;
+}
 </style>
