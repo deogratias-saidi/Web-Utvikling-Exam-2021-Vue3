@@ -1,4 +1,5 @@
 <template>
+<form class="row g-3" @submit.prevent="postRequest">
     <div class="mb-3">
       <label for="exampleFormControlInput1" class="form-label" required >Navn</label>
       <input
@@ -6,7 +7,7 @@
         class="form-control"
         id="exampleFormControlInput1"
         placeholder="Ola Nordmann"
-        v-model="UserName"
+        v-model="newRequest.UserName"
       />
     </div>
     <div class="mb-3">
@@ -16,7 +17,7 @@
         class="form-control"
         id="exampleFormControlInput1"
         placeholder="+47 12345678"
-        v-model="PhoneNumber"
+        v-model="newRequest.PhoneNumber"
       />
     </div>
     <div class="mb-3">
@@ -26,7 +27,7 @@
         class="form-control"
         id="exampleFormControlInput1"
         placeholder="Ola.nordmann@gmail.com"
-        v-model="EmailAddress"
+        v-model="newRequest.EmailAddress"
       />
     </div>
     <div class="mb-3">
@@ -36,7 +37,7 @@
         class="form-control"
         id="exampleFormControlInput1"
         placeholder="Karl Johans gate 1"
-        v-model="Address"
+        v-model="newRequest.Address"
       />
     </div>
 
@@ -50,7 +51,7 @@
           class="form-control"
           id="exampleFormControlInput1"
           placeholder="0000"
-          v-model="PostNumber"
+          v-model="newRequest.PostNumber"
         />
       </div>
       <div class="mb-3 col-6">
@@ -60,7 +61,7 @@
           class="form-control"
           id="exampleFormControlInput1"
           placeholder="Oslo"
-          v-model="PostalArea"
+          v-model="newRequest.PostalArea"
         />
       </div>
     </div>
@@ -72,7 +73,7 @@
         class="form-control"
         id="exampleFormControlInput1"
         placeholder="NOK"
-        v-model="Budget"
+        v-model="newRequest.Budget"
       />
     </div>
 
@@ -85,10 +86,11 @@
         id="exampleFormControlTextarea1"
         rows="3"
         placeholder="Gi en kort beskrivelse av hva din henvendelse gjelder..."
-        v-model="RequestDetails"
+        v-model="newRequest.RequestDetails"
       ></textarea>
     </div>
-    <button @click="postRequest" class="btn btn-primary">Send</button>
+    <button type="submit" class="btn btn-primary">Send</button>
+</form>
     
   
 </template>
@@ -96,11 +98,12 @@
 <script>
 
 import axios from 'axios'
-import { reactive, toRefs } from '@vue/reactivity'
-
+import { reactive } from '@vue/reactivity'
+import {useRouter } from 'vue-router'
 export default {
     
     setup(){
+        const router = useRouter()
         
         const newRequest = reactive({
             UserName:"",
@@ -116,16 +119,36 @@ export default {
 
         const API_URL = 'https://localhost:5001/api/requests'
 
-        const postRequest = () => {
-            axios.post(API_URL, newRequest)
-            .then((res) => {
-                res.data;
+        function postRequest(){
+          let UserName =  newRequest.UserName
+          let PhoneNumber = newRequest.PhoneNumber
+          let EmailAddress = newRequest.EmailAddress
+          let Address = newRequest.Address
+          let PostNumber = newRequest.PostNumber
+          let PostalArea = newRequest.PostalArea
+          let Budget = newRequest.Budget
+          let RequestDetails = newRequest.RequestDetails
+
+          axios.post(API_URL, {
+            UserName: UserName,
+            PhoneNumber: PhoneNumber,
+            EmailAddress: EmailAddress,
+            Address: Address,
+            PostNumber: PostNumber,
+            PostalArea: PostalArea,
+            Budget: Budget,
+            RequestDetails: RequestDetails
+          }).then(() =>{ // Når brukeren har send inn forespørsel, de blir direkt sent til hjemme siden
+            router.push({
+              name: 'landingpage'
             })
+          })
         }
 
         return{
-            ...toRefs(newRequest),
+            newRequest,
             postRequest,
+            router
             
         }
     }

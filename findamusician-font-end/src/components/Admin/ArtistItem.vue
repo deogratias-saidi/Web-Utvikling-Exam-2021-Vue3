@@ -18,7 +18,7 @@
             <tr v-for="artist in artists" :key="artist.id">
               <td>{{ artist.id }}</td>
               <td>{{ artist.artistName }}</td>
-              <td>{{ artist.contact}}</td>
+              <td>{{ artist.contact }}</td>
               <td>NOK {{ artist.price }}</td>
               <td class="d-flex justify-content-center gap-3">
                 <router-link
@@ -26,20 +26,18 @@
                   :to="`/artists/${artist.id}`"
                   ><i class="bx bx-show"></i
                 ></router-link>
+                <router-link
+                  class="btn btn-primary mx-2"
+                  :to="{name: 'editartist', params:{id:artist.id}}"
+                  ><i class="bx bx-edit-alt"></i
+                ></router-link>
                 <div
                   class="btn btn-danger"
-                  v-on:click="deleteArtist(artist.id)"
+                  @click.prevent="deleteArtist(artist.id)"
                 >
                   <i class="bx bx-trash"></i>
-
-                  
                 </div>
-
-                
               </td>
-
-              
-              
             </tr>
           </tbody>
         </table>
@@ -49,36 +47,11 @@
 </template>
 
 <script>
-import axios from 'axios'
+
 export default {
-    data(){
-    return {
-      artists: []
-    }
-
-  },
-  methods: {
-
-    getArtists(){
-      axios.get("https://localhost:5001/api/artists/")
-      .then((res) => {
-        this.artists = res.data
-      })
-    },
-
-    deleteArtist(id){
-      axios.delete(`https://localhost:5001/api/artists/${id}`)
-      .then(() => {
-        this.getArtists()
-        
-      })
-    },
-    
-    
-  },
-  mounted(){
-    this.getArtists()
-  }
+  
+  props:['artists']
+  
 };
 </script>
 

@@ -3,16 +3,17 @@ import LandingPage from "../views/LandingPage.vue";
 import ArtistsPage from "../views/ArtistsPage.vue";
 import RequestPage from "../views/RequestPage.vue";
 import PageNotFound from "../views/PageNotFound.vue";
-import EditArtists from "../views/AdminView/EditArtists.vue";
+
 import ArtistAdmin from "../views/AdminView/ArtistAdmin.vue";
 import AddArtist from "../views/AdminView/AddArtist.vue";
 import IncomingRequests from "../views/AdminView/IncomingRequests.vue";
 import SeeRequests from "../views/AdminView/SeeRequests.vue";
+import EditArtist from "../views/AdminView/EditArtist.vue";
 
 const routes = [
   {
     path: "/artists",
-    name: "LandingPage",
+    name: "landingpage",
     component: LandingPage,
   },
   {
@@ -37,13 +38,14 @@ const routes = [
   /* Admin Pages */
 
   {
-    path: "/admin/edit-artists",
-    name: "EditArtists",
-    component: EditArtists,
+    path: "/admin/editartist/:id",
+    name: "edit",
+    component: EditArtist,
   },
+
   {
-    path: "/admin/artist-admin",
-    name: "ArtistAdmin",
+    path: "/admin/editartist/",
+    name: "artistadmin",
     component: ArtistAdmin,
   },
   {
