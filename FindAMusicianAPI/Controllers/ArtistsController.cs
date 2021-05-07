@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using FindAMusicianAPI.Models;
 using Microsoft.AspNetCore.Cors;
@@ -25,8 +26,8 @@ namespace FindAMusicianAPI.Controller{
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Artist>> GetAllArtist(){
-             return await _context.Artists.ToListAsync();
+        public async Task<IEnumerable<Artist>> GetAllArtist(string sortBy ){ 
+             return await _context.Artists.OrderBy(a => a.ArtistName).ToListAsync(); //sortert etter navn
         }
 
         [HttpGet("{id}")]
@@ -35,7 +36,7 @@ namespace FindAMusicianAPI.Controller{
 
             if (artist == null)
             {
-                return NotFound();
+                return NotFound("Kan ikke finne artist med denne Id, prøv igjen");
             }
             return artist;
         }
@@ -51,7 +52,6 @@ namespace FindAMusicianAPI.Controller{
                 _artist.Image = artist.Image;
                 _artist.Description = artist.Description;
                 _context.SaveChanges();
-
             }
             return artist;
         }
@@ -77,11 +77,16 @@ namespace FindAMusicianAPI.Controller{
         [HttpPost]
         [Route("[action]")]
         public void UploadImage(IFormFile file){
-            string webRootPath = _hosting.WebRootPath;
-            string absolutePath = Path.Combine($"{webRootPath}/images/{file.FileName}");
-            using(var fileStream = new FileStream(absolutePath, FileMode.Create)){
-                file.CopyTo(fileStream);
+            string ext = Path.GetExtension(file.FileName);
+            if( ext== ".jpg" || ext == ".jgep" || ext == ".png"){ 
+                string webRootPath = _hosting.WebRootPath;
+                string absolutePath = Path.Combine($"{webRootPath}/images/{file.FileName}");
+                using(var fileStream = new FileStream(absolutePath, FileMode.Create)){
+                    file.CopyTo(fileStream);
+                }
+                
             }
+            
         }
 
         [HttpDelete("{id}")]

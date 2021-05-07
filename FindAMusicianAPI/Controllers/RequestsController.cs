@@ -54,13 +54,13 @@ namespace FindAMusicianAPI.Controller{
         [HttpPost]
         public async Task<ActionResult<Request>> AddRequest(Request request){
 
-            var now = DateTime.Now; // Dette er for å få dagens Dato.
+            var now = DateTime.Now; // For å få dato og tid som maskinen brukere
             var _request = new Request(){
                 UserName = request.UserName,
                 PhoneNumber = request.PhoneNumber,
                 EmailAddress = request.EmailAddress,
                 Address = request.Address,
-                DateCreated = now,
+                DateCreated = now, //bruker variablen now her.
                 PostNumber = request.PostNumber,
                 PostalArea = request.PostalArea,
                 Budget = request.Budget,
