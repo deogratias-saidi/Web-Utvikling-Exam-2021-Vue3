@@ -23,6 +23,10 @@
             <h3>Pris</h3>
             <h5 class="genre">NOK {{ artist.price }} per time</h5>
           </div>
+          <div class="col songs">
+            <h4>Sjanger</h4>
+            <p class="genre">{{ artist.genre }}</p>
+          </div>
           <div class="col bio">
             <h1>Bio</h1>
             <p>
