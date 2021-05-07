@@ -20,5 +20,10 @@ export default {
 </script>
 <style>
 
+body{
+  background: #212529;
+  color: #fff!important;
+  overflow-x: hidden;
+}
 
 </style>

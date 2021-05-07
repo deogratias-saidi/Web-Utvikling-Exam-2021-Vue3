@@ -23,7 +23,7 @@
               <td class="d-flex justify-content-center gap-3">
                 <router-link
                   class="btn btn-primary"
-                  :to="`/admin/incoming-request/${request.id}`"
+                  :to="{ name: 'seerequest', params: { id: request.id } }"
                   ><i class="bx bx-show"></i
                 ></router-link>
                 <div

@@ -59,7 +59,7 @@ const routes = [
   },
   {
     path: "/admin/incoming-request/:id",
-    name: "SeeRequests",
+    name: "seerequest",
     component: SeeRequests,
   },
   
