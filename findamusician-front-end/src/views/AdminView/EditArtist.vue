@@ -23,6 +23,7 @@
         <input type="text" class="form-control" v-model="artist.image" />
       </div>
       <div class="mb-3">
+        <label for="floatingTextarea2">Biograffi</label>
         <textarea
           class="form-control"
           v-model="artist.description"
@@ -30,7 +31,7 @@
           id="floatingTextarea2"
           style="height: 15rem"
         ></textarea>
-        <label for="floatingTextarea2">Description</label>
+        
       </div>
 
       <div class="col-12">

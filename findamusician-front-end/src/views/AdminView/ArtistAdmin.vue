@@ -11,8 +11,8 @@
             <tr>
               <th>Id</th>
               <th>Artist Navn</th>
-              <th>Kontakt</th>
-              <th>Pris</th>
+              <th class="mobile-view">Kontakt</th>
+              <th class="mobile-view">Pris</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -20,8 +20,9 @@
             <tr v-for="artist in artists" :key="artist.id">
               <td>{{ artist.id }}</td>
               <td>{{ artist.artistName }}</td>
-              <td>{{ artist.contact }}</td>
-              <td>NOK {{ artist.price }}</td>
+              <td class="mobile-view">{{ artist.contact }}</td>
+              <td class="mobile-view">{{ artist.price }}</td>
+              
               <td class="d-flex justify-content-center gap-3">
                 <router-link
                   class="btn btn-primary"
@@ -82,4 +83,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+
+@media screen and (max-width: 1240px) {
+  .mobile-view{
+    display: none;
+  }
+}
+
+</style>

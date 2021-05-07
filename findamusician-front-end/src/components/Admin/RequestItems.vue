@@ -7,11 +7,11 @@
         >
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Requested By</th>
+              <th>#Id</th>
+              <th>Fra</th>
               <th>Dato</th>
-              <th>Total</th>
-              <th>Action</th>
+              
+              <th>Behandle</th>
             </tr>
           </thead>
           <tbody>
@@ -19,7 +19,7 @@
               <td>{{ request.id }}</td>
               <td>{{ request.userName }}</td>
               <td>{{ dateFilter(request.dateCreated) }}</td>
-              <td>NOK {{ request.budget }}</td>
+              
               <td class="d-flex justify-content-center gap-3">
                 <router-link
                   class="btn btn-primary"
